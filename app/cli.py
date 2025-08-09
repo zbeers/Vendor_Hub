@@ -5,6 +5,7 @@ import typer
 app = typer.Typer(add_completion=False, no_args_is_help=True, help="Vender Hub CLI")
 __version__ = "0.1.0"
 
+
 # Vendors group
 vendors_app = typer.Typer(help="Manage vendor configuration")
 
@@ -33,8 +34,8 @@ def vendors_edit(slug: str = typer.Argument(..., help="Vendor slug")):
     """Edit a vendor (stub)."""
     typer.echo(f"Editing vendor: {slug}")
 
-
 app.add_typer(vendors_app, name="vendors")
+
 
 # Compliance group
 tos_app = typer.Typer(help="Compliance checks (TOS and robots.txt)")
@@ -55,6 +56,7 @@ def auth_login(slug: str = typer.Argument(..., help="Vendor slug")):
 
 app.add_typer(auth_app, name="auth")
 
+
 # Scraping group
 scrape_app = typer.Typer(help="Scraping workflows")
 
@@ -68,8 +70,8 @@ def scrap_run(
 
 app.add_typer(scrape_app, name="scrape")
 
-# Utilities group
 
+# Utilities group
 @app.command("version")
 def version():
     """Show CLI version"""
