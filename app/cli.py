@@ -102,6 +102,7 @@ def vendors_remove(slug: str = typer.Argument(..., help="Vendor slug"), force: b
         typer.echo("Aborted")
         raise typer.Exit(code=2)
     
+    # Remove the vendor file
     yml_path.unlink()
     typer.echo(f"Vendor {slug} removed")
 
