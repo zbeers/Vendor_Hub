@@ -17,25 +17,32 @@ vendors_app = typer.Typer(help="Manage vendor configuration")
 @vendors_app.command("list")
 def vendors_list():
     """List known vendors."""
+    # List the vendor files
     for yml_path in sorted(VENDORS_DIR.glob("*.yaml")):
         if yml_path.name.startswith("_"):
             continue
+        # Load the vendor data
         try:
             data = yaml.safe_load(yml_path.read_text(encoding="utf-8")) or {}
             slug = data.get("slug", yml_path.stem)
             base = data.get("base_url", "")
             tos = data.get("tos_url", "")
+            # Print the vendor data
             typer.echo(f"{slug}: {base} ({tos})")
+        # Print any errors
         except Exception as e:
             typer.echo(f"Error loading {yml_path}: {e}")
 
 @vendors_app.command("show")
 def vendors_show(slug: str = typer.Argument(..., help="Vendor slug")):
     """Show one vendor."""
+    # Check if the vendor exists
     yml_path = VENDORS_DIR / f"{slug}.yaml"
     if not yml_path.exists():
         typer.echo(f"Vendor {slug} not found")
         raise typer.Exit(code=1)
+    
+    # Load the vendor data
     data = yaml.safe_load(yml_path.read_text(encoding="utf-8")) or {}
     typer.echo(yaml.safe_dump(data, sort_keys=False))
 
