@@ -1,0 +1,27 @@
+# Required: short, URL-safe identifier for this vendor
+slug: the_internet
+
+# Required: site root (used for robots.txt and resolving relative URLs)
+base_url: https://the-internet.herokuapp.com/
+
+# Optional: TOS URL (if blank, we'll guess like /terms or /terms-of-service)
+tos_url: https://www.heroku.com/policy/acceptable-use
+
+# Pages to fetch first (we'll add smarter crawling later)
+start_urls:
+  - https://the-internet.herokuapp.com/
+
+# Login configuration for headless browser automation
+login:
+  # Where the login form lives
+  login_url: https://the-internet.herokuapp.com/login
+
+  #Enviroment variable keys to read credentials
+  username_env: VENDOR_THEINTERNET_USERNAME
+  password_env: VENDOR_THEINTERNET_PASSWORD
+
+  # CSS selectors for the login form fields and submit button
+  username_selector: input[name="username"]
+  password_selector: input[name="password"]
+  submit_selector: button[type="submit"]
+

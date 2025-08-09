@@ -1,0 +1,27 @@
+# Required: short, URL-safe identifier for this vendor
+slug: quotes
+
+# Required: site root (used for robots.txt and resolving relative URLs)
+base_url: https://quotes.toscrape.com/
+
+# Optional: TOS URL (if blank, we'll guess like /terms or /terms-of-service)
+tos_url: https://quotes.toscrape.com/terms-of-use
+
+# Pages to fetch first (we'll add smarter crawling later)
+start_urls:
+  - https://quotes.toscrape.com/
+
+# Login configuration for headless browser automation
+login:
+  # Where the login form lives
+  login_url: https://quotes.toscrape.com/login
+
+  #Enviroment variable keys to read credentials
+  username_env: VENDOR_QUOTES_USERNAME
+  password_env: VENDOR_QUOTES_PASSWORD
+
+  # CSS selectors for the login form fields and submit button
+  username_selector: input[name="username"]
+  password_selector: input[name="password"]
+  submit_selector: button[type="submit"]
+
