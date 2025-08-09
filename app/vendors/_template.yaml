@@ -1,0 +1,26 @@
+# Required: short, URL-safe identifier for this vendor
+slug: __SLUG__
+
+# Required: site root (used for robots.txt and resolving relative URLs)
+base_url: __BASE_URLS__
+
+# Optional: TOS URL (if blank, we'll guess like /terms or /terms-of-service)
+tos_url: __TOS_URL__
+
+# Pages to fetch first (we'll add smarter crawling later)
+start_urls:
+  - __BASE_URL__
+
+# Login configuration for headless browser automation
+login:
+  # Where the login form lives
+  login_url: __LOGIN_URL__
+
+  # Enviroment variable keys to read credentials
+  username_env: __USERNAME_ENV__
+  password_env: __PASSWORD_ENV__
+
+  # CSS selectors for the login form fields and submit button
+  username_selector: "input[name=\"username\"]"
+  password_selector: "input[name=\"password\"]"
+  submit_selector: "button[type=\"submit\"]"
